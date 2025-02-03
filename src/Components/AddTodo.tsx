@@ -1,10 +1,11 @@
 import type { AddTodoProps } from "@/types/todo";
-import { useRef, useState } from "react";
-import type { ChangeEvent, FormEvent } from "react";
+import { useRef } from "react";
+import type { FormEvent } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 export default function AddTodo({ addTodo }: AddTodoProps) {
+	const id = useRef(0);
 	const title = useRef<HTMLInputElement>(null);
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -13,7 +14,7 @@ export default function AddTodo({ addTodo }: AddTodoProps) {
 
 		const newTitle = title.current.value.trim();
 		if (!newTitle) return;
-		addTodo(newTitle);
+		addTodo(newTitle, ++id.current);
 		title.current.value = '';
 	};
 

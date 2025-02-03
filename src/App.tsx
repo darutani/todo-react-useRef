@@ -5,16 +5,14 @@ import Layout from "./Components/Layout";
 import TodoList from "./Components/TodoList";
 import type { Todo } from "./types/todo";
 
-let id = 0;
-
 function App() {
 	const [todos, setTodos] = useState<Todo[]>([]);
 
-	const addTodo = (title: string) => {
+	const addTodo = (title: string, id: number ) => {
 		setTodos((prevTodos) => [
 			...prevTodos,
 			{
-				id: ++id,
+				id: id,
 				title: title,
 				isDone: false,
 				createdAt: new Date(),

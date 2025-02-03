@@ -8,7 +8,7 @@ export type Todo = {
 };
 
 export type AddTodoProps = {
-	addTodo: (title: string) => void;
+	addTodo: (title: string, id: number) => void;
 };
 
 export type LayoutProps = {
